@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField] float moveSpeed = 1f;
-    [SerializeField] float forwardSpeed = 30f;
+    [SerializeField] float forwardSpeed = 0f;
     Rigidbody2D rigidbody;
 
     Vector2 rawInput;
