@@ -115,6 +115,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2540483071063361184}
+  - {fileID: 291107578503501805}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -178,6 +179,8 @@ MonoBehaviour:
   moveSpeed: 1.5
   forwardSpeed: 0
   tileMap: {fileID: 0}
+  bullet: {fileID: 5178077443942842900, guid: 33888758b4ccabc459e1e3fa9b7b75e5, type: 3}
+  bulletPostition: {fileID: 291107578503501805}
 --- !u!50 &918522641
 Rigidbody2D:
   serializedVersion: 4
@@ -215,3 +218,33 @@ CircleCollider2D:
   m_Offset: {x: -0.2679029, y: -0.258913}
   serializedVersion: 2
   m_Radius: 0.2932293
+--- !u!1 &5211162506256436571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 291107578503501805}
+  m_Layer: 0
+  m_Name: BulletPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &291107578503501805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211162506256436571}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.313, y: -0.101, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2540483072063562909}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

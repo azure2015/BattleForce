@@ -9,7 +9,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] float moveSpeed = 1.5f;
     [SerializeField] float forwardSpeed = 0f;
-    [SerializeField] Tilemap tileMap; 
+    [SerializeField] Tilemap tileMap;
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform bulletPostition;
+
 
     Vector2 startPosition;
     Rigidbody2D rigidbody;
@@ -26,13 +29,13 @@ public class Player : MonoBehaviour
     void Update()
     {
        
-        if ((transform.position.x <= -2 && rawInput.x ==-1))
+        if ((transform.position.x <= -2.6 && rawInput.x ==-1))
         {
             rawInput.x = 0;
         }
 
         
-        if(transform.position.x >= 1.8 && rawInput.x == 1)
+        if(transform.position.x >= 1.7 && rawInput.x == 1)
         {
             rawInput.x = 0;
         }
@@ -51,7 +54,11 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Here");
         }
-      //  Debug.Log(rawInput);
+    }
+
+    void OnFire(InputValue value)
+    {
+        Instantiate(bullet, transform.position, Quaternion.identity);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -59,7 +66,6 @@ public class Player : MonoBehaviour
         if(collision.tag =="EndLevel")
         {
             tileMap.transform.position = startPosition;
-            Debug.Log("Hit");
         }
     }
 
