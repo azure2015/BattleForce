@@ -19,14 +19,27 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.AddForce(transform.up * forwardSpeed);
+     //   rigidbody = GetComponent<Rigidbody2D>();
+    //    rigidbody.AddForce(transform.up * forwardSpeed);
         startPosition = tileMap.transform.position;
     }
     void Update()
     {
+       
+        if ((transform.position.x <= -2 && rawInput.x ==-1))
+        {
+            rawInput.x = 0;
+        }
+
+        
+        if(transform.position.x >= 1.8 && rawInput.x == 1)
+        {
+            rawInput.x = 0;
+        }
         Vector3 delta = rawInput * moveSpeed * Time.deltaTime;
-        transform.position += delta;
+       
+            transform.position += delta;
+        
         //  rigidbody.AddForce(transform.up * forwardSpeed);
    //     transform.Translate(new Vector3(0.0f, moveSpeed * Time.deltaTime, 0.0f));
     }
@@ -47,6 +60,14 @@ public class Player : MonoBehaviour
         {
             tileMap.transform.position = startPosition;
             Debug.Log("Hit");
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
         }
     }
 }

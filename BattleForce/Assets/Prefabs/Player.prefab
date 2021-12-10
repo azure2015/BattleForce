@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
   forwardSpeed: 0
+  tileMap: {fileID: 0}
 --- !u!50 &918522641
 Rigidbody2D:
   serializedVersion: 4
