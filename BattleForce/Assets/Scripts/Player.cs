@@ -39,6 +39,12 @@ public class Player : MonoBehaviour
         {
             rawInput.x = 0;
         }
+
+        if(transform.position.y <= -2.0)
+        {
+            if(rawInput.y >= -1  && rawInput.y <0) rawInput.y = 0;
+//            Debug.Log("X : " + rawInput.x + "   Y: " + rawInput.y);
+        }
         Vector3 delta = rawInput * moveSpeed * Time.deltaTime;
        
             transform.position += delta;
@@ -50,10 +56,10 @@ public class Player : MonoBehaviour
     void OnMove(InputValue value)
     {
         rawInput = value.Get<Vector2>();
-        if(rawInput.y == -1)
-        {
-            Debug.Log("Here");
-        }
+       // if(transform.position.y <-2)
+      //  {
+       //     Debug.Log("Here");
+       // }
     }
 
     void OnFire(InputValue value)
