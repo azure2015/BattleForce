@@ -26,7 +26,7 @@ public class MoveBullet : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+      //      Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }

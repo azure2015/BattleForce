@@ -5,12 +5,22 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] float hitPoints;
+    [SerializeField] ParticleSystem particleSystem;
 
-    void OnCollision2D(Collider2D collision)
+    float delayTime = 0.5f;
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag=="Bullet")
         {
-            Debug.Log("Hit");
+            PlayParticleHit();
+            Destroy(gameObject, delayTime);
+
         }
+    }
+
+    void PlayParticleHit()
+    {
+        particleSystem.Play();
     }
 }
