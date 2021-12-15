@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 5
-  direction: 0
+  bulletType: 1
 --- !u!61 &8044922009779524991
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -6,12 +6,14 @@ public class MoveEnemy : MonoBehaviour
 {
     [SerializeField] int direction;    //1 - down
     [SerializeField] float moveSpeed;
+    [SerializeField] GameObject bulletPrefab;
 
     float lifeSpan = 8.0f;
 
     // Update is called once per frame
     void Update()
     {
+
 
        switch(direction)
         {
@@ -31,6 +33,13 @@ public class MoveEnemy : MonoBehaviour
         }
 
         checkRemove();
+
+        float randomNumber = Random.Range(1, 500);
+        if (randomNumber == 1)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            
+        }
     }
 
     void checkRemove()
