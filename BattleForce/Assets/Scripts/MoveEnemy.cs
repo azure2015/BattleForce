@@ -9,6 +9,7 @@ public class MoveEnemy : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
 
     float lifeSpan = 8.0f;
+    Coroutine firing;
 
     // Update is called once per frame
     void Update()
@@ -32,16 +33,31 @@ public class MoveEnemy : MonoBehaviour
                 break;
         }
 
-        checkRemove();
 
-        float randomNumber = Random.Range(1, 500);
+        if (firing == null)
+        {
+            firing = StartCoroutine(fireBullet());
+        } else if (firing !=null)
+        {
+            
+         float randomNumber = Random.Range(1, 500);
+            
         if (randomNumber == 1)
         {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            
+                firing = null;
         }
     }
+    }
 
+    IEnumerator fireBullet()
+    {
+        Debug.Log("Fire");
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+        Destroy(bullet, 3.0f);
+        yield return new WaitForSeconds(3);
+        
+    }
     void checkRemove()
     {
         if(transform.position.y < -lifeSpan)

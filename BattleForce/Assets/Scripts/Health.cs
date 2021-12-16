@@ -18,7 +18,6 @@ public class Health : MonoBehaviour
         {
             angleDirection = -0.5f;
         }
-        Debug.Log(randomNumber);
     }
     void Update()
     {

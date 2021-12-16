@@ -8,27 +8,19 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField] float moveSpeed = 1.5f;
-    [SerializeField] float forwardSpeed = 0f;
     [SerializeField] Tilemap tileMap;
     [SerializeField] GameObject bullet;
-    [SerializeField] Transform bulletPostition;
-
 
     Vector2 startPosition;
-    Rigidbody2D rigidbody;
-
     Vector2 rawInput;
 
 
     void Awake()
     {
-     //   rigidbody = GetComponent<Rigidbody2D>();
-    //    rigidbody.AddForce(transform.up * forwardSpeed);
         startPosition = tileMap.transform.position;
     }
     void Update()
-    {
-       
+    {   
         if ((transform.position.x <= -2.6 && rawInput.x ==-1))
         {
             rawInput.x = 0;
@@ -43,23 +35,14 @@ public class Player : MonoBehaviour
         if(transform.position.y <= -2.0)
         {
             if(rawInput.y >= -1  && rawInput.y <0) rawInput.y = 0;
-//            Debug.Log("X : " + rawInput.x + "   Y: " + rawInput.y);
         }
         Vector3 delta = rawInput * moveSpeed * Time.deltaTime;
-       
-            transform.position += delta;
-        
-        //  rigidbody.AddForce(transform.up * forwardSpeed);
-   //     transform.Translate(new Vector3(0.0f, moveSpeed * Time.deltaTime, 0.0f));
+        transform.position += delta;
     }
 
     void OnMove(InputValue value)
     {
         rawInput = value.Get<Vector2>();
-       // if(transform.position.y <-2)
-      //  {
-       //     Debug.Log("Here");
-       // }
     }
 
     void OnFire(InputValue value)
@@ -73,6 +56,11 @@ public class Player : MonoBehaviour
         {
             tileMap.transform.position = startPosition;
         }
+        if (collision.tag == "EnemyBullet")
+        {
+            Destroy(gameObject);
+
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -83,6 +71,7 @@ public class Player : MonoBehaviour
         }
         
     }
+
 
 
 }
