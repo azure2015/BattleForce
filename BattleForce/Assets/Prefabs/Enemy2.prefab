@@ -133,6 +133,8 @@ MonoBehaviour:
   direction: 1
   moveSpeed: 2
   bulletPrefab: {fileID: 5178077443942842900, guid: 70e921467414ccd4cabb0a158d8bf76b, type: 3}
+  fireRateMax: 3
+  fireRateMin: 1
 --- !u!58 &8859498713970712545
 CircleCollider2D:
   m_ObjectHideFlags: 0

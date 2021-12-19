@@ -7,10 +7,19 @@ public class MoveEnemy : MonoBehaviour
     [SerializeField] int direction;    //1 - down
     [SerializeField] float moveSpeed;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] float fireRateMax = 3.0f;
+    [SerializeField] float fireRateMin = 1.0f;
 
     float lifeSpan = 6.0f;
-    Coroutine firing;
+
+    float timeLeft;
+    Coroutine firingCoroutine;
     IEnumerator fireGun;
+
+    void Start()
+    {
+        timeLeft = Random.Range(fireRateMin, fireRateMax);    
+    }
     // Update is called once per frame
     void Update()
     {
@@ -33,37 +42,40 @@ public class MoveEnemy : MonoBehaviour
                 break;
         }
 
-
-       // if (firing == null)
-       // {
-       //     StopCoroutine(fireBullet());
-       //     firing = StartCoroutine(fireBullet());
-      //  } else if (firing !=null)
-      //  {
-            
-         float randomNumber = Random.Range(1, 500);
-            
-        if (randomNumber == 1)
+        timeLeft -= Time.deltaTime;
+        if(timeLeft<=0 )
         {
-                if (fireGun != null)
-                    StopCoroutine(fireGun);
-
-            fireGun = fireBullet();
-            StartCoroutine(fireGun);
-                //firing = null;
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            timeLeft = Random.Range(fireRateMin, fireRateMax);
         }
-   // }
+
+
+
+        //if (firingCoroutine == null)
+        //{
+        //    StopCoroutine(fireBullet());
+        //    firingCoroutine = StartCoroutine(fireBullet());
+        //}
+        //else if (firingCoroutine != null)
+        //{
+        //    StopCoroutine(fireBullet());
+        //    firingCoroutine = null;
+        //}
+            
+
     }
 
-    IEnumerator fireBullet()
-    {
-        
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+    //IEnumerator fireBullet()
+    //{
 
-        Destroy(bullet, 3.0f);
-        yield return new WaitForSeconds(3);
-        
-    }
+    //    while (true)
+    //    {
+    //        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+    //        Destroy(bullet, 2.0f);
+    //        yield return new WaitForSeconds(fireRate);
+    //    }
+    //}
     void checkRemove()
     {
         if(transform.position.y < -lifeSpan)
