@@ -58,7 +58,8 @@ public class Player : MonoBehaviour
         }
         if (collision.tag == "EnemyBullet")
         {
-            Destroy(gameObject);
+            PlayerDeath();
+            //Destroy(gameObject);
 
         }
     }
@@ -67,11 +68,16 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy" )
         {
-            Destroy(gameObject);
+            PlayerDeath();
+//            Destroy(gameObject);
         }
         
     }
 
+    void PlayerDeath()
+    {
+        FindObjectOfType<GameSession>().ProcessPlayerDeath();
+    }
 
 
 }

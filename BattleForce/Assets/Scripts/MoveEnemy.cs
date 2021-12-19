@@ -8,9 +8,9 @@ public class MoveEnemy : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] GameObject bulletPrefab;
 
-    float lifeSpan = 8.0f;
+    float lifeSpan = 6.0f;
     Coroutine firing;
-
+    IEnumerator fireGun;
     // Update is called once per frame
     void Update()
     {
@@ -34,19 +34,25 @@ public class MoveEnemy : MonoBehaviour
         }
 
 
-        if (firing == null)
-        {
-            firing = StartCoroutine(fireBullet());
-        } else if (firing !=null)
-        {
+       // if (firing == null)
+       // {
+       //     StopCoroutine(fireBullet());
+       //     firing = StartCoroutine(fireBullet());
+      //  } else if (firing !=null)
+      //  {
             
          float randomNumber = Random.Range(1, 500);
             
         if (randomNumber == 1)
         {
-                firing = null;
+                if (fireGun != null)
+                    StopCoroutine(fireGun);
+
+            fireGun = fireBullet();
+            StartCoroutine(fireGun);
+                //firing = null;
         }
-    }
+   // }
     }
 
     IEnumerator fireBullet()
