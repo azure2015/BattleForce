@@ -9,6 +9,9 @@ public class GameSession : MonoBehaviour
 {
     [SerializeField] int playerLives = 3;
     [SerializeField] TextMeshProUGUI livesText;
+    [SerializeField] TextMeshProUGUI scoreText;
+
+    int score = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -27,7 +30,8 @@ public class GameSession : MonoBehaviour
 
     void Start()
     {
-        livesText.text = "Lives : " +playerLives.ToString();    
+        livesText.text = "Lives : " +playerLives.ToString();
+        scoreText.text = "Score : " + score.ToString();
     }
     public void ProcessPlayerDeath()
     {
@@ -54,5 +58,11 @@ public class GameSession : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex);
         livesText.text = "Lives : " + playerLives.ToString();
 
+    }
+
+    public void AddScore(int value)
+    {
+        score += value;
+        scoreText.text = "Score : " + score.ToString();
     }
 }

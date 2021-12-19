@@ -31,6 +31,7 @@ public class Health : MonoBehaviour
     {
         if(collision.gameObject.tag=="Bullet")
         {
+            FindObjectOfType<GameSession>().AddScore(10);
             var getCollider = gameObject.GetComponent<CircleCollider2D>();
             getCollider.enabled = false;
             isDead = true;

@@ -57,7 +57,7 @@ public class MoveEnemy : MonoBehaviour
 
     IEnumerator fireBullet()
     {
-        Debug.Log("Fire");
+        
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
 
         Destroy(bullet, 3.0f);
