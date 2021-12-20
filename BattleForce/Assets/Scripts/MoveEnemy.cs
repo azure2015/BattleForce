@@ -10,11 +10,8 @@ public class MoveEnemy : MonoBehaviour
     [SerializeField] float fireRateMax = 3.0f;
     [SerializeField] float fireRateMin = 1.0f;
 
-    float lifeSpan = 6.0f;
-
+    float lifeSpan = 5.0f;
     float timeLeft;
-    Coroutine firingCoroutine;
-    IEnumerator fireGun;
 
     void Start()
     {
@@ -23,8 +20,6 @@ public class MoveEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
        switch(direction)
         {
             case 1: 
@@ -49,36 +44,15 @@ public class MoveEnemy : MonoBehaviour
             timeLeft = Random.Range(fireRateMin, fireRateMax);
         }
 
-
-
-        //if (firingCoroutine == null)
-        //{
-        //    StopCoroutine(fireBullet());
-        //    firingCoroutine = StartCoroutine(fireBullet());
-        //}
-        //else if (firingCoroutine != null)
-        //{
-        //    StopCoroutine(fireBullet());
-        //    firingCoroutine = null;
-        //}
-            
+        checkRemove();
 
     }
 
-    //IEnumerator fireBullet()
-    //{
-
-    //    while (true)
-    //    {
-    //        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-
-    //        Destroy(bullet, 2.0f);
-    //        yield return new WaitForSeconds(fireRate);
-    //    }
-    //}
+ 
     void checkRemove()
     {
-        if(transform.position.y < -lifeSpan)
+        lifeSpan -= Time.deltaTime;
+        if(lifeSpan <= 0)
         {
             Destroy(gameObject);
         }
