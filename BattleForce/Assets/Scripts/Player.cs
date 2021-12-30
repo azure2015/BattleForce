@@ -8,8 +8,9 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField] float moveSpeed = 1.5f;
-    [SerializeField] Tilemap tileMap;
     [SerializeField] GameObject bullet;
+
+    int hitPoints = 3;
 
     Vector2 startPosition;
     Vector2 rawInput;
@@ -17,7 +18,8 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        startPosition = tileMap.transform.position;
+       startPosition = transform.position;
+      
     }
     void Update()
     {   
@@ -32,8 +34,9 @@ public class Player : MonoBehaviour
             rawInput.x = 0;
         }
 
-        if(transform.position.y <= -2.0)
+        if(transform.position.y <= -3.0)
         {
+           
             if(rawInput.y >= -1  && rawInput.y <0) rawInput.y = 0;
         }
         Vector3 delta = rawInput * moveSpeed * Time.deltaTime;
@@ -54,23 +57,32 @@ public class Player : MonoBehaviour
     {
         if(collision.tag =="EndLevel")
         {
-            tileMap.transform.position = startPosition;
+            PlayerDeath();
+           // Debug.Log("End of Level");
+          //  Debug.Log("y - axis : " + startPosition.y);
+          //  transform.position = startPosition;
         }
-        if (collision.tag == "EnemyBullet")
+        if (collision.tag == "EnemyBullet" && hitPoints <= 0)
         {
             PlayerDeath();
-            //Destroy(gameObject);
+        }
+        else if (collision.tag == "EnemyBullet")
+        {
+            hitPoints--;
 
         }
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy" )
+        if(collision.gameObject.tag == "Enemy")
         {
             PlayerDeath();
 //            Destroy(gameObject);
         }
+
+
         
     }
 

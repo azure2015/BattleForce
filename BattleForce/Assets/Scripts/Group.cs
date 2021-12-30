@@ -25,14 +25,15 @@ public class Group : MonoBehaviour
         float distance = Vector2.Distance(transform.position, playerPosition.transform.position);
         if (isEnabled == false && distance < 2)
         {
+            Quaternion rotation = new Quaternion();
+            rotation[2] = 180f;
             foreach(GameObject element in wayPoints)
             {
-                Instantiate(enemy, element.transform.position, Quaternion.identity);
+                Instantiate(enemy, element.transform.position, rotation); // Quaternion.identity);
             }
 
             isEnabled = true;
-            Debug.Log("Start wave");
         }
-        Debug.Log("distance : " + distance);
+       
     }
 }

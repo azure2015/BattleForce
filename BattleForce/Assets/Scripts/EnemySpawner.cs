@@ -9,12 +9,14 @@ public class EnemySpawner : MonoBehaviour
 
     float randX;
     float nextSpawn = 0.0f;
+    Quaternion rotation;
     Vector2 startPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rotation = new Quaternion();
+        rotation[2] = 180f;
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
             nextSpawn = Time.time + SpawnRate;
             randX = Random.Range(-2f, 2f);
             startPosition = new Vector2(randX, transform.position.y);
-            Instantiate(enemy, startPosition, Quaternion.identity);
+            Instantiate(enemy, startPosition, rotation);  // Quaternion.identity);
         }
     }
 }

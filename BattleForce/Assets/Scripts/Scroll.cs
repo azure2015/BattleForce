@@ -14,7 +14,7 @@ public class Scroll : MonoBehaviour
 
     void Update()
     {
-        transform.position= new Vector2(0f,transform.position.y + scrollSpeed* Time.deltaTime);   
+        transform.position= new Vector2(startPosition.x,transform.position.y + scrollSpeed* Time.deltaTime);   
         
     }
 
