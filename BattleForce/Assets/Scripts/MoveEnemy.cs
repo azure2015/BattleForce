@@ -40,7 +40,7 @@ public class MoveEnemy : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if(timeLeft<=0 )
         {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            GameObject EnemyBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             timeLeft = Random.Range(fireRateMin, fireRateMax);
         }
 

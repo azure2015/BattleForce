@@ -32,6 +32,23 @@ public class MoveBullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        if (bulletType == 3)
+        {
+            transform.position = new Vector2(transform.position.x +( bulletSpeed / 2) * Time.deltaTime, transform.position.y + bulletSpeed * Time.deltaTime);
+            if (transform.position.y < -10)
+            {
+                Destroy(gameObject);
+            }
+        }
+        if (bulletType == 4)
+        {
+            transform.position = new Vector2(transform.position.x - (bulletSpeed / 2) * Time.deltaTime, transform.position.y + bulletSpeed * Time.deltaTime);
+            if (transform.position.y < -10)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -41,6 +58,7 @@ public class MoveBullet : MonoBehaviour
         {
             if (collision.tag == "Enemy")
             {
+                
                 Destroy(gameObject);
             }
         }

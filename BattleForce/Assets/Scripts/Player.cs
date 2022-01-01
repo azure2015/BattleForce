@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     Vector2 startPosition;
     Vector2 rawInput;
+    int count = 0;
 
 
     void Awake()
@@ -50,6 +51,8 @@ public class Player : MonoBehaviour
 
     void OnFire(InputValue value)
     {
+        count++;
+        Debug.Log("Fire Count : " + count);
         Instantiate(bullet, transform.position, Quaternion.identity);
     }
 
@@ -58,9 +61,7 @@ public class Player : MonoBehaviour
         if(collision.tag =="EndLevel")
         {
             PlayerDeath();
-           // Debug.Log("End of Level");
-          //  Debug.Log("y - axis : " + startPosition.y);
-          //  transform.position = startPosition;
+      
         }
         if (collision.tag == "EnemyBullet" && hitPoints <= 0)
         {
@@ -79,9 +80,8 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             PlayerDeath();
-//            Destroy(gameObject);
         }
-
+        
 
         
     }

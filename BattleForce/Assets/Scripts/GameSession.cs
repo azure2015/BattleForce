@@ -11,11 +11,14 @@ public class GameSession : MonoBehaviour
     [SerializeField] TextMeshProUGUI livesText;
     [SerializeField] TextMeshProUGUI scoreText;
 
+    int currentLevel;
+
     int score = 0;
 
     // Start is called before the first frame update
     void Awake()
     {
+        int currentLevel = SceneManager.GetActiveScene().buildIndex;
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
         if(numGameSessions >1)
         {
@@ -30,6 +33,7 @@ public class GameSession : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Scene Number: " + currentLevel);
         livesText.text = "Lives : " +playerLives.ToString();
         scoreText.text = "Score : " + score.ToString();
     }
