@@ -9,17 +9,17 @@ public class Player : MonoBehaviour
 
     [SerializeField] float moveSpeed = 1.5f;
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject resetPosition;
 
     int hitPoints = 3;
 
     Vector2 startPosition;
     Vector2 rawInput;
-    int count = 0;
-
 
     void Awake()
     {
-       startPosition = transform.position;
+    //   startPosition = transform.position;
+        startPosition = resetPosition.transform.position;
       
     }
     void Update()
@@ -51,8 +51,6 @@ public class Player : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-        count++;
-        Debug.Log("Fire Count : " + count);
         Instantiate(bullet, transform.position, Quaternion.identity);
     }
 
@@ -60,7 +58,8 @@ public class Player : MonoBehaviour
     {
         if(collision.tag =="EndLevel")
         {
-            PlayerDeath();
+            //  PlayerDeath();
+            transform.position = new Vector3(transform.position.x, transform.position.y - 8.0f, transform.position.z); 
       
         }
         if (collision.tag == "EnemyBullet" && hitPoints <= 0)
@@ -70,6 +69,7 @@ public class Player : MonoBehaviour
         else if (collision.tag == "EnemyBullet")
         {
             hitPoints--;
+            Debug.Log("Player health : " + hitPoints);
 
         }
 

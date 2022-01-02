@@ -49,7 +49,7 @@ public class Health : MonoBehaviour
         } else if (collision.gameObject.tag == "Bullet" && hitPoints >=0)
         {
             hitPoints--;
-            Debug.Log("Enemy Hit :" + hitPoints);
+            
         }
     }
 

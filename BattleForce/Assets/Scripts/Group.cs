@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Group : MonoBehaviour
 {
-    [SerializeField] GameObject playerPosition;
+    [SerializeField] GameObject camPosition;
     [SerializeField] GameObject enemy;
     [SerializeField] List<GameObject> wayPoints;
   //  [SerializeField] GameObject wayPoint;
@@ -22,8 +22,10 @@ public class Group : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector2.Distance(transform.position, playerPosition.transform.position);
-        if (isEnabled == false && distance < 2)
+    //    float distance = Vector2.Distance(transform.position, camPosition.transform.position);
+        float info = transform.position.y - camPosition.transform.position.y;
+   
+        if (isEnabled == false && info < 0.5 && info > -0.5)  //distance < 1.2)
         {
             Quaternion rotation = new Quaternion();
             rotation[2] = 180f;

@@ -63,7 +63,7 @@ public class MoveBullet : MonoBehaviour
             }
         }
 
-        if (bulletType == 2)
+        if (bulletType >= 2 )
         {
             if(collision.tag == "Player")
             {
