@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject enemy;
+    [SerializeField] GameObject camPosition;
     [SerializeField] float SpawnRate;
 
     float randX;
@@ -31,9 +32,25 @@ public class EnemySpawner : MonoBehaviour
             {
                 nextSpawn = Time.time + SpawnRate;
                 randX = Random.Range(-2f, 2f);
-                startPosition = new Vector2(randX, transform.position.y);
+                startPosition = new Vector2(randX, camPosition.transform.position.y);
                 Instantiate(enemy, startPosition, rotation);  // Quaternion.identity);
             }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "CamCollision")
+        {
+            isSpawn = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.tag == "CamCollision")
+        {
+            isSpawn = false;
         }
     }
 }

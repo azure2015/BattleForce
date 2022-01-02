@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - EnemyBullet
   - RandomWave
+  - CamCollision
   layers:
   - Default
   - TransparentFX
