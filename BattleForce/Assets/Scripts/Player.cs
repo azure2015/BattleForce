@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,20 +11,17 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 1.5f;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject resetPosition;
+    [SerializeField] Tilemap tilePosition;
+    [SerializeField] GameObject endPosition;
+     
 
     int hitPoints = 3;
 
     Vector2 startPosition;
     Vector2 rawInput;
 
-    void Awake()
-    {
-    //   startPosition = transform.position;
-        startPosition = resetPosition.transform.position;
-      
-    }
     void Update()
-    {   
+    {
         if ((transform.position.x <= -2.6 && rawInput.x ==-1))
         {
             rawInput.x = 0;
@@ -42,6 +40,7 @@ public class Player : MonoBehaviour
         }
         Vector3 delta = rawInput * moveSpeed * Time.deltaTime;
         transform.position += delta;
+
     }
 
     void OnMove(InputValue value)
@@ -58,9 +57,12 @@ public class Player : MonoBehaviour
     {
         if(collision.tag =="EndLevel")
         {
-            //  PlayerDeath();
-            transform.position = new Vector3(transform.position.x, transform.position.y - 8.0f, transform.position.z); 
-      
+            float yPos = endPosition.transform.position.y - resetPosition.transform.position.y;
+            startPosition = tilePosition.transform.position;
+            startPosition.y = startPosition.y + yPos;
+            tilePosition.transform.position = startPosition;
+   
+
         }
         if (collision.tag == "EnemyBullet" && hitPoints <= 0)
         {
@@ -81,9 +83,7 @@ public class Player : MonoBehaviour
         {
             PlayerDeath();
         }
-        
-
-        
+           
     }
 
     void PlayerDeath()
