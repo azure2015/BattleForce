@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
 
     void OnFire(InputValue value)
     {
+     
         Instantiate(bullet, transform.position, Quaternion.identity);
     }
 

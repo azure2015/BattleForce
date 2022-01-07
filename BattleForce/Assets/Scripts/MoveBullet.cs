@@ -5,16 +5,23 @@ using UnityEngine;
 public class MoveBullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed;
-    [SerializeField] int bulletType; 
-
+    [SerializeField] float bulletLife = 2.5f;
+    [SerializeField] int bulletType;
+    
+    float lifeSpan;
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+        lifeSpan += Time.deltaTime;
+
+        if(lifeSpan> bulletLife)
+        {
+            Destroy(gameObject);
+        }
         if (bulletType == 1)
         {
             transform.position = new Vector2(transform.position.x, transform.position.y + bulletSpeed * Time.deltaTime);
@@ -38,6 +45,7 @@ public class MoveBullet : MonoBehaviour
             transform.position = new Vector2(transform.position.x +( bulletSpeed / 2) * Time.deltaTime, transform.position.y + bulletSpeed * Time.deltaTime);
             if (transform.position.y < -10)
             {
+                
                 Destroy(gameObject);
             }
         }
