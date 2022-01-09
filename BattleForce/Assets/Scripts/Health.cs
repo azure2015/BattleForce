@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
 
     Animator anim;
     float delayTime = 0.5f;
-    float angleDirection = 0.5f;
+    float angleDirection = 1.5f;
     bool isDead = false;
 
     void Start()

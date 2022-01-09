@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject resetPosition;
     [SerializeField] Tilemap tilePosition;
     [SerializeField] GameObject endPosition;
+
+    float minXPos = -3.2f;
+    float maxXPos = 2.2f;
      
 
     int hitPoints = 3;
@@ -22,13 +25,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if ((transform.position.x <= -2.6 && rawInput.x ==-1))
+        if ((transform.position.x <= minXPos && rawInput.x ==-1))
         {
             rawInput.x = 0;
         }
 
         
-        if(transform.position.x >= 1.7 && rawInput.x == 1)
+        if(transform.position.x >= maxXPos && rawInput.x == 1)
         {
             rawInput.x = 0;
         }

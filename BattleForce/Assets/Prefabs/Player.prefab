@@ -180,6 +180,8 @@ MonoBehaviour:
   moveSpeed: 1.5
   bullet: {fileID: 5178077443942842900, guid: 33888758b4ccabc459e1e3fa9b7b75e5, type: 3}
   resetPosition: {fileID: 0}
+  tilePosition: {fileID: 0}
+  endPosition: {fileID: 0}
 --- !u!50 &918522641
 Rigidbody2D:
   serializedVersion: 4
@@ -199,7 +201,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &918522638
 CircleCollider2D:

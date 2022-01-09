@@ -5,16 +5,20 @@ using UnityEngine;
 public class GunPost : MonoBehaviour
 {
 
-    [SerializeField] int hitPoints = 6;
+    [SerializeField] int hitPoints = 36;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float fireRateMax = 3.0f;
     [SerializeField] float fireRateMin = 1.0f;
 
+    Animator anim;
     float timeLeft;
+
+    bool animIsPlaying = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         timeLeft = Random.Range(fireRateMin, fireRateMax);
     }
 
@@ -29,5 +33,28 @@ public class GunPost : MonoBehaviour
             timeLeft = Random.Range(fireRateMin, fireRateMax);
         }
 
+        if(hitPoints <0 )
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+          
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Debug.Log("Hit");
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Bullet")
+        {
+            anim.Play("Explosion",0,0);
+            hitPoints--;
+        }
     }
 }

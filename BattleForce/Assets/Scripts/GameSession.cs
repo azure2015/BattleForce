@@ -33,7 +33,7 @@ public class GameSession : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Scene Number: " + currentLevel);
+    //    Debug.Log("Scene Number: " + currentLevel);
         livesText.text = "Lives : " +playerLives.ToString();
         scoreText.text = "Score : " + score.ToString();
     }
