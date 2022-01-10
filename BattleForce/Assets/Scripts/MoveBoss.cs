@@ -70,7 +70,7 @@ public class MoveBoss : MonoBehaviour
     {
 //        if (transform.position.y < 30)
   //      {
-            transform.position = new Vector2(transform.position.x, transform.position.y - (moveSpeed/4) * Time.deltaTime);
+            transform.position = new Vector2(transform.position.x, transform.position.y - (moveSpeed/10) * Time.deltaTime);
     //    }
     }
 
@@ -96,4 +96,21 @@ public class MoveBoss : MonoBehaviour
             isCenter = true;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Bullet")
+        {
+            Debug.Log("Hit plane");
+        }
+    }
+
+    //void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "Bullet")
+    //    {
+    //        anim.Play("Explosion", 0, 0);
+    //        hitPoints--;
+    //    }
+    //}
 }

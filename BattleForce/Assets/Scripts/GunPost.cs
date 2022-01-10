@@ -13,7 +13,7 @@ public class GunPost : MonoBehaviour
     Animator anim;
     float timeLeft;
 
-    bool animIsPlaying = false;
+ //   bool animIsPlaying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,14 +40,14 @@ public class GunPost : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
+    //void OnCollisionEnter2D(Collision2D collision)
+    //{
           
-        if (collision.gameObject.tag == "Bullet")
-        {
-            Debug.Log("Hit");
-        }
-    }
+    //    if (collision.gameObject.tag == "Bullet")
+    //    {
+    //        Debug.Log("Hit");
+    //    }
+    //}
 
     void OnTriggerEnter2D(Collider2D collision)
     {

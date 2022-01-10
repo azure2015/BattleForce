@@ -10,6 +10,7 @@ TagManager:
   - EnemyBullet
   - RandomWave
   - CamCollision
+  - Boundary
   layers:
   - Default
   - TransparentFX
