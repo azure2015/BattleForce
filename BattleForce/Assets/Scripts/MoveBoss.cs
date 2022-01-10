@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveBoss : MonoBehaviour
 {
 
- //   [SerializeField] int hitPoints = 20;
+    [SerializeField] int hitPoints = 40;
     [SerializeField] float moveSpeed = 3.0f;
     [SerializeField] float minLeft = -2.8f;
     [SerializeField] float maxRight = 2.4f;
@@ -16,11 +16,13 @@ public class MoveBoss : MonoBehaviour
     string currentAction;
     bool isCenter = false;
 
+  //  Animator anim;
+
     
     // Start is called before the first frame update
     void Start()
     {
-        //        currentAction = Actions[currentIndex];
+     //   anim = GetComponent<Animator>();
         currentAction = "Down";
     }
 
@@ -68,10 +70,7 @@ public class MoveBoss : MonoBehaviour
 
     void moveDown()
     {
-//        if (transform.position.y < 30)
-  //      {
-            transform.position = new Vector2(transform.position.x, transform.position.y - (moveSpeed/10) * Time.deltaTime);
-    //    }
+            transform.position = new Vector2(transform.position.x, transform.position.y - (moveSpeed/8) * Time.deltaTime);
     }
 
     void moveRight()
@@ -84,7 +83,6 @@ public class MoveBoss : MonoBehaviour
 
     void moveCenter()
     {
-  //      Debug.Log("Is Center : " + isCenter);
         if(transform.position.x < -0.2 && !isCenter )
         {
             transform.position = new Vector2(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y);
@@ -99,18 +97,17 @@ public class MoveBoss : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Bullet")
+        if(collision.tag == "Bullet" && transform.childCount == 0)
         {
-            Debug.Log("Hit plane");
+            hitPoints--;
+            if(hitPoints <0 )
+            {
+                Destroy(gameObject);
+            }
+          //  anim.Play("Explosion", 0, 0);
+          //  Debug.Log("Hit plane : " + hitPoints);
         }
     }
 
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.tag == "Bullet")
-    //    {
-    //        anim.Play("Explosion", 0, 0);
-    //        hitPoints--;
-    //    }
-    //}
+
 }

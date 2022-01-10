@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveBullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed;
-    [SerializeField] float bulletLife = 2.5f;
+  //  [SerializeField] float bulletLife = 2.5f;
     [SerializeField] int bulletType;
     
     float lifeSpan;
@@ -60,7 +60,6 @@ public class MoveBullet : MonoBehaviour
 
             if (collision.tag == "Boundary")
             {
-                Debug.Log(par.name);
 
                 if (par.name == "BulletSpray(Clone)")
                 {
