@@ -10,8 +10,15 @@ public class MoveBoss : MonoBehaviour
     [SerializeField] float minLeft = -2.8f;
     [SerializeField] float maxRight = 2.4f;
 
+    [SerializeField] GameObject bossBullet;
+    [SerializeField] float fireRateMax = 2.0f;
+    [SerializeField] float fireRateMin = .5f;
+
+
     [SerializeField] List<string> Actions = new List<string> { "Left", "Right", "Center","Left", "Right" };
     float timer = 4f;
+    float timeLeft;
+
     int currentIndex = 0;
     string currentAction;
     bool isCenter = false;
@@ -24,6 +31,8 @@ public class MoveBoss : MonoBehaviour
     {
      //   anim = GetComponent<Animator>();
         currentAction = "Down";
+        timeLeft = Random.Range(fireRateMin, fireRateMax);
+
     }
 
     // Update is called once per frame
@@ -58,8 +67,19 @@ public class MoveBoss : MonoBehaviour
                 break;
         }
 
+        CheckBossFireBullet();
+
     }
 
+    void CheckBossFireBullet()
+    {
+        timeLeft -= Time.deltaTime;
+        if (timeLeft <= 0)
+        {
+            GameObject EnemyBullet = Instantiate(bossBullet, transform.position, Quaternion.identity);
+            timeLeft = Random.Range(fireRateMin, fireRateMax);
+        }
+    }
     void moveLeft()
     {
         if (transform.position.x > minLeft)

@@ -14,8 +14,12 @@ public class Player : MonoBehaviour
     [SerializeField] Tilemap tilePosition;
     [SerializeField] GameObject endPosition;
 
-    float minXPos = -3.2f;
-    float maxXPos = 2.2f;
+
+    [SerializeField] GameObject bottomLevel;
+    [SerializeField] GameObject topLevel;
+
+    float minXPos = -4.9f; // -3.2f;
+    float maxXPos = 4.4f;
      
 
     int hitPoints = 3;
@@ -25,22 +29,44 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if ((transform.position.x <= minXPos && rawInput.x ==-1))
+        //       if ((transform.position.x <= minXPos && rawInput.x ==-1))
+        //       {
+        //           rawInput.x = 0;
+        //       }
+
+
+        //       if(transform.position.x >= maxXPos && rawInput.x == 1)
+        //       {
+        //           rawInput.x = 0;
+        //       }
+
+        //     //  if(transform.position.y <= -3.0)
+        //   //    {
+
+        //     //      if(rawInput.y >= -1  && rawInput.y <0) rawInput.y = 0;
+        ////       }
+        ///
+        if ((transform.position.x <= minXPos && rawInput.x < 0))
         {
             rawInput.x = 0;
         }
 
-        
-        if(transform.position.x >= maxXPos && rawInput.x == 1)
+
+        if (transform.position.x >= maxXPos && rawInput.x > 0)
         {
             rawInput.x = 0;
         }
 
-        if(transform.position.y <= -3.0)
+        if (transform.position.y >= topLevel.transform.position.y && rawInput.y > 0)
         {
-           
-            if(rawInput.y >= -1  && rawInput.y <0) rawInput.y = 0;
+            rawInput.y = 0;
         }
+
+        if (transform.position.y <= bottomLevel.transform.position.y && rawInput.y < 0)
+        {
+            rawInput.y = 0;
+        }
+
         Vector3 delta = rawInput * moveSpeed * Time.deltaTime;
         transform.position += delta;
 

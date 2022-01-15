@@ -271,6 +271,9 @@ MonoBehaviour:
   moveSpeed: 3
   minLeft: -2.8
   maxRight: 2.4
+  bossBullet: {fileID: 5178077443942842900, guid: eb5915ca5f937df44b595167242c2578, type: 3}
+  fireRateMax: 1
+  fireRateMin: 0.25
   Actions:
   - Left
   - Right
