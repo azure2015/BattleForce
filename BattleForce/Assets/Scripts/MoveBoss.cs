@@ -23,6 +23,7 @@ public class MoveBoss : MonoBehaviour
     int currentIndex = 0;
     string currentAction;
     bool isCenter = false;
+    bool isDestroy = false;
 
   //  Animator anim;
 
@@ -39,36 +40,39 @@ public class MoveBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer <0 )
+        if (!isDestroy)
         {
-            timer = 4f;
-            currentIndex = (currentIndex >= Actions.Count -1) ? 0 : currentIndex +1;  
-            currentAction = Actions[currentIndex];
-            isCenter = false;
+            if (timer < 0)
+            {
+                timer = 4f;
+                currentIndex = (currentIndex >= Actions.Count - 1) ? 0 : currentIndex + 1;
+                currentAction = Actions[currentIndex];
+                isCenter = false;
 
+            }
+            timer -= Time.deltaTime;
+
+            switch (currentAction)
+            {
+                case "Left":
+                    moveLeft();
+                    break;
+                case "Right":
+                    moveRight();
+                    break;
+                case "Center":
+                    moveCenter();
+                    break;
+                case "Down":
+                    moveDown();
+                    break;
+                default:
+                    break;
+            }
+
+            CheckBossFireBullet();
         }
-        timer -= Time.deltaTime;
-     //   Debug.Log("Action : " + currentAction);
-
-        switch(currentAction)
-        {
-            case "Left":
-                moveLeft();
-                break;
-            case "Right":
-                moveRight();
-                break;
-            case "Center":
-                moveCenter();
-                break;
-            case "Down":
-                moveDown();
-                break;
-            default:
-                break;
-        }
-
-        CheckBossFireBullet();
+        BossDestroyed();
 
     }
 
@@ -116,6 +120,20 @@ public class MoveBoss : MonoBehaviour
         }
     }
 
+    void BossDestroyed()
+    {
+        if(isDestroy)
+        {
+            timeLeft -= Time.deltaTime;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            if (timeLeft < 0)
+            {
+                FindObjectOfType<GameSession>().NextLevel();
+            }
+        }
+    }
+
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Bullet" && transform.childCount == 0)
@@ -126,7 +144,9 @@ public class MoveBoss : MonoBehaviour
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z +10.0f) ;
               //  Debug.Log("x pos : " + transform.position.x + "   ypos :  " + transform.position.y);
                 Instantiate(endExplosion, pos, Quaternion.identity);
-                Destroy(gameObject, 1.0f);
+                isDestroy = true;
+                timeLeft = 3.0f;
+ //               Destroy(gameObject, 2.0f);
             }
           //  anim.Play("Explosion", 0, 0);
           //  Debug.Log("Hit plane : " + hitPoints);

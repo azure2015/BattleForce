@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MoveCam : MonoBehaviour
 {
-    [SerializeField] float moveCamSpeed = 5;
+
 
 
     float minXPos = -1.2f; // -3.2f;

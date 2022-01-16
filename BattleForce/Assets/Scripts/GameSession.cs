@@ -18,7 +18,7 @@ public class GameSession : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+        currentLevel = SceneManager.GetActiveScene().buildIndex;
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
         if(numGameSessions >1)
         {
@@ -72,7 +72,10 @@ public class GameSession : MonoBehaviour
 
     public void NextLevel()
     {
-        currentLevel++;
+        Debug.Log("Game Session : " + currentLevel);
 
+        currentLevel++;
+        Debug.Log("Game Session : " + currentLevel);
+        SceneManager.LoadScene(currentLevel);
     }
 }
