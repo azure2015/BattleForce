@@ -20,18 +20,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Debug.Log($"CAM [{target.name}]  :" + target.position.y);
 
-        //if(target.position.y > 5.0f)
-        //{
-        //    Debug.Log("High"); 
-        //}
-
-        //if (target.position.y < 1.0f)
-        //{
-        //    Debug.Log("Low");
-        //}
-     //   )
         if (transform.position.y  > target.position.y + 2.0f || transform.position.y < target.position.y - 2.0f)
         {
             if (transform.position != target.position)

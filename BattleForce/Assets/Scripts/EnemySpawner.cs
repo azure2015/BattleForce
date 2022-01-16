@@ -26,6 +26,8 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float camLevel = transform.position.y - camPosition.transform.position.y;
+   //     Debug.Log("Spawn : " + isSpawn +  "   Level  : "  + transform.lossyScale.y);
         if (isSpawn)
         {
             if (Time.time > nextSpawn)

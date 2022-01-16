@@ -25,7 +25,7 @@ public class Move2 : MonoBehaviour
     void Update()
     {
 
-        Debug.Log("Top : " + topLevel.transform.position.y);
+    //    Debug.Log("Top : " + topLevel.transform.position.y);
         if ((transform.position.x <= minXPos && rawInput.x <0 ))
         {
             rawInput.x = 0;

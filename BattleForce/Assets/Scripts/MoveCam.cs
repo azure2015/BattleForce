@@ -28,7 +28,7 @@ public class MoveCam : MonoBehaviour
 
         }
         // transform.Translate(new Vector3(0.0f, moveCamSpeed * Time.deltaTime, 0.0f));
-        Debug.Log("Cam : " + cineCam.transform.localPosition.x); 
+      //  Debug.Log("Cam : " + cineCam.transform.localPosition.x); 
     //   cineCam.
     }
 }

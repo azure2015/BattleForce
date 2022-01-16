@@ -267,13 +267,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cfa5600b8422fe45ade2f58be9dfe5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 40
+  hitPoints: 5
   moveSpeed: 3
   minLeft: -2.8
   maxRight: 2.4
   bossBullet: {fileID: 5178077443942842900, guid: eb5915ca5f937df44b595167242c2578, type: 3}
   fireRateMax: 1
   fireRateMin: 0.25
+  endExplosion: {fileID: 1617893629113062206, guid: 4a57c379389e340439cf75eb52bc28a9, type: 3}
   Actions:
   - Left
   - Right

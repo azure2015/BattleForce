@@ -18,34 +18,32 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject bottomLevel;
     [SerializeField] GameObject topLevel;
 
+    [SerializeField] float fireRate = 0.15f;
+
     float minXPos = -4.9f; // -3.2f;
     float maxXPos = 4.4f;
+    
      
 
     int hitPoints = 3;
+
+    bool canFire = true;
 
     Vector2 startPosition;
     Vector2 rawInput;
 
     void Update()
     {
-        //       if ((transform.position.x <= minXPos && rawInput.x ==-1))
-        //       {
-        //           rawInput.x = 0;
-        //       }
+        if (!canFire)
+        {
+            fireRate -= Time.deltaTime;
+            if(fireRate<0)
+            {
+                canFire = true;
+                fireRate = 0.3f;
+            }
+        }
 
-
-        //       if(transform.position.x >= maxXPos && rawInput.x == 1)
-        //       {
-        //           rawInput.x = 0;
-        //       }
-
-        //     //  if(transform.position.y <= -3.0)
-        //   //    {
-
-        //     //      if(rawInput.y >= -1  && rawInput.y <0) rawInput.y = 0;
-        ////       }
-        ///
         if ((transform.position.x <= minXPos && rawInput.x < 0))
         {
             rawInput.x = 0;
@@ -79,8 +77,11 @@ public class Player : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-     
-        Instantiate(bullet, transform.position, Quaternion.identity);
+        if (canFire)
+        {
+            Instantiate(bullet, transform.position, Quaternion.identity);
+            canFire = false;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

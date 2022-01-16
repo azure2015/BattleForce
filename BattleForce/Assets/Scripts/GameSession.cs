@@ -69,4 +69,10 @@ public class GameSession : MonoBehaviour
         score += value;
         scoreText.text = "Score : " + score.ToString();
     }
+
+    public void NextLevel()
+    {
+        currentLevel++;
+
+    }
 }

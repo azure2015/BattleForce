@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveBoss : MonoBehaviour
 {
 
-    [SerializeField] int hitPoints = 40;
+    [SerializeField] int hitPoints = 10;
     [SerializeField] float moveSpeed = 3.0f;
     [SerializeField] float minLeft = -2.8f;
     [SerializeField] float maxRight = 2.4f;
@@ -14,6 +14,7 @@ public class MoveBoss : MonoBehaviour
     [SerializeField] float fireRateMax = 2.0f;
     [SerializeField] float fireRateMin = .5f;
 
+    [SerializeField] GameObject endExplosion;
 
     [SerializeField] List<string> Actions = new List<string> { "Left", "Right", "Center","Left", "Right" };
     float timer = 4f;
@@ -90,7 +91,7 @@ public class MoveBoss : MonoBehaviour
 
     void moveDown()
     {
-            transform.position = new Vector2(transform.position.x, transform.position.y - (moveSpeed/8) * Time.deltaTime);
+            transform.position = new Vector2(transform.position.x, transform.position.y - (moveSpeed/5) * Time.deltaTime);
     }
 
     void moveRight()
@@ -122,7 +123,10 @@ public class MoveBoss : MonoBehaviour
             hitPoints--;
             if(hitPoints <0 )
             {
-                Destroy(gameObject);
+                Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z +10.0f) ;
+              //  Debug.Log("x pos : " + transform.position.x + "   ypos :  " + transform.position.y);
+                Instantiate(endExplosion, pos, Quaternion.identity);
+                Destroy(gameObject, 1.0f);
             }
           //  anim.Play("Explosion", 0, 0);
           //  Debug.Log("Hit plane : " + hitPoints);
