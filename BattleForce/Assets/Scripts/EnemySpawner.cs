@@ -8,17 +8,18 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject camPosition;
     [SerializeField] float SpawnRate;
 
-    float randX;
+    BoxCollider2D colliderSize;
     float nextSpawn = 0.0f;
-
+    float maxSize;
     bool isSpawn = false;
 
     Quaternion rotation;
-    Vector2 startPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        colliderSize = GetComponent<BoxCollider2D>();
+        maxSize = Mathf.Round(colliderSize.size.x - 2) / 2;
         rotation = new Quaternion();
         rotation[2] = 180f;
     }
@@ -26,15 +27,13 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float camLevel = transform.position.y - camPosition.transform.position.y;
-   //     Debug.Log("Spawn : " + isSpawn +  "   Level  : "  + transform.lossyScale.y);
         if (isSpawn)
         {
             if (Time.time > nextSpawn)
             {
                 nextSpawn = Time.time + SpawnRate;
-                randX = Random.Range(-2f, 2f);
-                startPosition = new Vector2(randX, camPosition.transform.position.y);
+                var randomXPos = Random.Range(-maxSize, maxSize);
+                Vector2 startPosition = new Vector2(randomXPos, camPosition.transform.position.y);
                 Instantiate(enemy, startPosition, rotation);  // Quaternion.identity);
             }
         }

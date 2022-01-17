@@ -7,35 +7,24 @@ public class Group : MonoBehaviour
     [SerializeField] GameObject camPosition;
     [SerializeField] GameObject enemy;
     [SerializeField] List<GameObject> wayPoints;
-  //  [SerializeField] GameObject wayPoint;
-
-    Vector2 startPosition;
 
     bool isEnabled = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-   //     startPosition = wayPoint.transform.position;
-    }
 
     // Update is called once per frame
     void Update()
     {
-    //    float distance = Vector2.Distance(transform.position, camPosition.transform.position);
-        float info = transform.position.y - camPosition.transform.position.y;
+        float camLocation = transform.position.y - camPosition.transform.position.y;
    
-        if (isEnabled == false && info < 0.5 && info > -0.5)  //distance < 1.2)
+        if (isEnabled == false && camLocation < 0.5) 
         {
-            Quaternion rotation = new Quaternion();
-            rotation[2] = 180f;
+            Quaternion rotation = new Quaternion(0f,0f,180f,0f);
             foreach(GameObject element in wayPoints)
             {
-                Instantiate(enemy, element.transform.position, rotation); // Quaternion.identity);
+                Instantiate(enemy, element.transform.position, rotation);
             }
 
             isEnabled = true;
         }
-       
     }
+
 }

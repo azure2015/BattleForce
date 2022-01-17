@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +9,6 @@ public class GameSession : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
 
     int currentLevel;
-
     int score = 0;
 
     // Start is called before the first frame update
@@ -33,7 +29,6 @@ public class GameSession : MonoBehaviour
 
     void Start()
     {
-    //    Debug.Log("Scene Number: " + currentLevel);
         livesText.text = "Lives : " +playerLives.ToString();
         scoreText.text = "Score : " + score.ToString();
     }
@@ -72,10 +67,7 @@ public class GameSession : MonoBehaviour
 
     public void NextLevel()
     {
-        Debug.Log("Game Session : " + currentLevel);
-
         currentLevel++;
-        Debug.Log("Game Session : " + currentLevel);
         SceneManager.LoadScene(currentLevel);
     }
 }

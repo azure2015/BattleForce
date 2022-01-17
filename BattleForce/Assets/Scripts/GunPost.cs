@@ -40,15 +40,6 @@ public class GunPost : MonoBehaviour
 
     }
 
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-          
-    //    if (collision.gameObject.tag == "Bullet")
-    //    {
-    //        Debug.Log("Hit");
-    //    }
-    //}
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Bullet")
