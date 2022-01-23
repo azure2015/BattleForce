@@ -5,7 +5,6 @@ using UnityEngine;
 public class MoveBullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed;
-  //  [SerializeField] float bulletLife = 2.5f;
     [SerializeField] int bulletType;
     
     float lifeSpan;
@@ -38,7 +37,7 @@ public class MoveBullet : MonoBehaviour
         {
             transform.position = new Vector2(transform.position.x - (bulletSpeed / 2) * Time.deltaTime, transform.position.y + bulletSpeed * Time.deltaTime);
         }
-     
+
 
     }
 

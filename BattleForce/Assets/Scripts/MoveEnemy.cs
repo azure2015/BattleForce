@@ -31,6 +31,12 @@ public class MoveEnemy : MonoBehaviour
             case 3:
                 moveLeftDown();
                 break;
+            case 4:
+                moveLeftToRight();
+                break;
+            case 5:
+                moveRightToLeft();
+                break;
 
             default:
                 moveDown();
@@ -71,5 +77,16 @@ public class MoveEnemy : MonoBehaviour
     void moveLeftDown()
     {
         transform.position = new Vector2(transform.position.x - (moveSpeed / 2) * Time.deltaTime, transform.position.y - moveSpeed * Time.deltaTime);
+    }
+
+    void moveLeftToRight()
+    {
+        transform.position = new Vector2(transform.position.x + (moveSpeed * Time.deltaTime), transform.position.y);
+
+    }
+    void moveRightToLeft()
+    {
+        transform.position = new Vector2(transform.position.x - (moveSpeed * Time.deltaTime), transform.position.y);
+
     }
 }
