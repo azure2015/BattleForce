@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject resetPosition;
     [SerializeField] Tilemap tilePosition;
     [SerializeField] GameObject endPosition;
+    [SerializeField] ParticleSystem playerHit = null;
 
 
     [SerializeField] GameObject bottomLevel;
@@ -34,8 +35,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        
+
         if (!canFire)
         {
+          
             fireRate -= Time.deltaTime;
             if(fireRate<0)
             {
@@ -102,6 +106,7 @@ public class Player : MonoBehaviour
         else if (collision.tag == "EnemyBullet")
         {
             hitPoints--;
+            PlayParticleHit();
             Debug.Log("Player health : " + hitPoints);
 
         }
@@ -120,6 +125,11 @@ public class Player : MonoBehaviour
     void PlayerDeath()
     {
         FindObjectOfType<GameSession>().ProcessPlayerDeath();
+    }
+
+    void PlayParticleHit()
+    {
+        playerHit.Play();
     }
 
 
