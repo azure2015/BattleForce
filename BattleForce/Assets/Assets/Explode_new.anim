@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Explosion2
+  m_Name: Explode_new
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -65,6 +65,8 @@ AnimationClip:
       value: {fileID: 6521648133403573801, guid: b07009596ac40724a903b29d8eef1873, type: 3}
     - time: 1.8333334
       value: {fileID: -4314356628765517388, guid: b07009596ac40724a903b29d8eef1873, type: 3}
+    - time: 1.9166666
+      value: {fileID: 7346014743733695688, guid: b07009596ac40724a903b29d8eef1873, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -107,12 +109,13 @@ AnimationClip:
     - {fileID: -5356623252178366342, guid: b07009596ac40724a903b29d8eef1873, type: 3}
     - {fileID: 6521648133403573801, guid: b07009596ac40724a903b29d8eef1873, type: 3}
     - {fileID: -4314356628765517388, guid: b07009596ac40724a903b29d8eef1873, type: 3}
+    - {fileID: 7346014743733695688, guid: b07009596ac40724a903b29d8eef1873, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.9166667
+    m_StopTime: 2
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

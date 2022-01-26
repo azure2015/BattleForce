@@ -44,7 +44,7 @@ public class GunPost : MonoBehaviour
     {
         if(collision.tag == "Bullet")
         {
-            anim.Play("Explosion",0,0);
+            anim.Play("Explode_new",0,0);
             hitPoints--;
         }
     }
