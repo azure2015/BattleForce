@@ -21,10 +21,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] float fireRate = 0.15f;
 
+    [SerializeField] List<Sprite> planeSprites;
+
     float minXPos = -4.9f; // -3.2f;
     float maxXPos = 4.4f;
-    
-     
 
     int hitPoints = 3;
 
@@ -106,6 +106,7 @@ public class Player : MonoBehaviour
         else if (collision.tag == "EnemyBullet")
         {
             hitPoints--;
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = planeSprites[hitPoints];
             PlayParticleHit();
             Debug.Log("Player health : " + hitPoints);
 
