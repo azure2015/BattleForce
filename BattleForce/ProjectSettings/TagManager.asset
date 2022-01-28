@@ -11,6 +11,7 @@ TagManager:
   - RandomWave
   - CamCollision
   - Boundary
+  - Tank
   layers:
   - Default
   - TransparentFX

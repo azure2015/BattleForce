@@ -25,19 +25,30 @@ public class Player : MonoBehaviour
 
     float minXPos = -4.9f; // -3.2f;
     float maxXPos = 4.4f;
+    float timeSpan = 3.0f;
 
     int hitPoints = 3;
 
     bool canFire = true;
+    bool isAlive = true;
 
     Vector2 startPosition;
     Vector2 rawInput;
+
+    Animator anim;
+    AudioSource audioSource;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
         
 
-        if (!canFire)
+        if (!canFire && isAlive)
         {
           
             fireRate -= Time.deltaTime;
@@ -69,9 +80,21 @@ public class Player : MonoBehaviour
             rawInput.y = 0;
         }
 
-        Vector3 delta = rawInput * moveSpeed * Time.deltaTime;
-        transform.position += delta;
+        if (isAlive)
+        {
+            Vector3 delta = rawInput * moveSpeed * Time.deltaTime;
+            transform.position += delta;
+        } else
+        {
+            timeSpan -= Time.deltaTime;
+            anim.Play("Explode_new");
+            if (timeSpan <= 0)
+            {
+                PlayerDeath();
+            }
+        }
 
+        
     }
 
     void OnMove(InputValue value)
@@ -101,7 +124,10 @@ public class Player : MonoBehaviour
         }
         if (collision.tag == "EnemyBullet" && hitPoints <= 0)
         {
-            PlayerDeath();
+            isAlive = false;
+            anim = GetComponent<Animator>();
+            audioSource.Stop();
+           // PlayerDeath();
         }
         else if (collision.tag == "EnemyBullet")
         {
