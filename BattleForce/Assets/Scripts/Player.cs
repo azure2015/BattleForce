@@ -37,11 +37,14 @@ public class Player : MonoBehaviour
 
     Animator anim;
     AudioSource audioSource;
+    SpriteRenderer spitfireSprite;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        spitfireSprite = GetComponent<SpriteRenderer>();
+
     }
 
     void Update()
@@ -126,13 +129,14 @@ public class Player : MonoBehaviour
         {
             isAlive = false;
             anim = GetComponent<Animator>();
+            anim.enabled = true;
             audioSource.Stop();
            // PlayerDeath();
         }
         else if (collision.tag == "EnemyBullet")
         {
             hitPoints--;
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = planeSprites[hitPoints];
+            spitfireSprite.sprite = planeSprites[hitPoints];
             PlayParticleHit();
             Debug.Log("Player health : " + hitPoints);
 

@@ -50,11 +50,11 @@ public class MoveEnemy : MonoBehaviour
             timeLeft = Random.Range(fireRateMin, fireRateMax);
         }
 
-        checkRemove();
+   //     checkRemove();
 
     }
 
- 
+  
     void checkRemove()
     {
         lifeSpan -= Time.deltaTime;
@@ -64,6 +64,14 @@ public class MoveEnemy : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Boundary")
+        {
+
+            Destroy(gameObject);
+        }
+    }
     void moveDown()
     {
         transform.position = new Vector2(transform.position.x, transform.position.y - moveSpeed * Time.deltaTime);

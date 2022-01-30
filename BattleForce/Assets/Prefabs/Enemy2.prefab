@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0e348a69eeb0e4e930cc820bae0161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 2
+  hitPoints: 1
   particleSystem: {fileID: 4309798107497965183}
 --- !u!50 &7444040761649076271
 Rigidbody2D:
