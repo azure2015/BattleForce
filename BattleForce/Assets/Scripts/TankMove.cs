@@ -11,7 +11,7 @@ public class TankMove : MonoBehaviour
 
     [SerializeField] GameObject endExplosion;
 
-    [SerializeField] List<string> Actions = new List<string> { "Left", "Right", "Center", "Left", "Right" };
+    [SerializeField] List<string> Actions = new List<string> { "Down", "Up", "Down", "Up"};
     float timer = 4f;
     float timeLeft;
 
@@ -60,6 +60,9 @@ public class TankMove : MonoBehaviour
                 case "Down":
                     moveDown();
                     break;
+                case "Up":
+                    moveUp();
+                    break;
                 default:
                     break;
             }
@@ -83,6 +86,12 @@ public class TankMove : MonoBehaviour
     {
         transform.position = new Vector2(transform.position.x, transform.position.y - (moveSpeed / 5) * Time.deltaTime);
     }
+
+    void moveUp()
+    {
+        transform.position = new Vector2(transform.position.x, transform.position.y + (moveSpeed / 5) * Time.deltaTime);
+    }
+
 
     void moveRight()
     {

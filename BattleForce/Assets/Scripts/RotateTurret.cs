@@ -12,27 +12,63 @@ public class RotateTurret : MonoBehaviour
 
     Vector3 angleToLeft = new Vector3(0, 0, -30f);
 
+    float angleZ = 35.0f;
+
+    bool isRight = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        //   moveDown();
-      //  RotateLeft();
-        this.transform.Rotate(angleToRoate); // * Time.deltaTime);
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        RotateLeft();
+        //angleZ += 2.0f;
+        //RotateLeft();
+        RotateByDegrees(angleZ);
+        if(transform.rotation.eulerAngles.z >180 && transform.rotation.eulerAngles.z <90)
+        {
+            angleZ *= -1;
+        }
+     //   if(transform.rotation.eulerAngles.z )
+     //   Debug.Log("Rotation : " + transform.rotation.eulerAngles.z);
         //Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, 5.0f);
 
         // transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
     }
 
+    void RotateByDegrees(float angleZ)
+    {
+        Vector3 rotationToAdd = new Vector3(0f, 0f, angleZ)*Time.deltaTime;
+        transform.Rotate(rotationToAdd);
+    }
     void RotateLeft()
     {
-        Debug.Log("Rotation : " + transform.rotation.z);
-        this.transform.Rotate(0f,0f,10f * Time.deltaTime);
+        Vector3 newRotation = new Vector3(0, 0, angleZ*Time.deltaTime);
+        transform.eulerAngles = newRotation;
+
+
+        //  this.transform.Rotate(0f, 0f, 10f * Time.deltaTime);
+        //   Debug.Log("Rotation : " + this.transform.localRotation.z * Mathf.PI);
+        //if (transform.rotation.z >= 180 && transform.rotation.z <= 360)
+        //  {
+        //      this.transform.Rotate(0f, 0f, 10f * Time.deltaTime);
+        //      isRight = false;
+        //   }
+    }
+
+    void RotateRight()
+    {
+
+            this.transform.Rotate(0f, 0f, -10f * Time.deltaTime);
+        //    Debug.Log("Rotation : " + transform.rotation.z);
+        //if (transform.rotation.z >= 0 && transform.rotation.z <= 180)
+        //{
+        //    this.transform.Rotate(0f, 0f, -10f * Time.deltaTime);
+        //    isRight = true;
+        //}
     }
 }

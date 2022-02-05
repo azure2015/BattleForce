@@ -9,7 +9,7 @@ public class ForwardBullet : MonoBehaviour
     [SerializeField] Rigidbody2D bullet;
     // Start is called before the first frame update
 
-    float timeDelay = 3.0f;
+    float timeDelay = .5f;
 
     void Start()
     {
@@ -22,9 +22,12 @@ public class ForwardBullet : MonoBehaviour
         timeDelay -= Time.deltaTime;
         if (timeDelay < 0)
         {
+            //    Quaternion angleToFire = Quaternion.Euler(0, 0, barrel.rotation.z + 180f);
+            //  barrel.transform.Rotate(0, 0, 180f);
+            Debug.Log("Bullet dir " + barrel.rotation);
             var firedBullet = Instantiate(bullet, barrel.position, barrel.rotation); 
             firedBullet.AddForce(barrel.up * 224.0f);
-            timeDelay = 5.0f;
+            timeDelay = Random.Range(0.3f,0.8f);
         }
     }
 }
