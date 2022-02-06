@@ -142,14 +142,10 @@ public class MoveBoss : MonoBehaviour
             if(hitPoints <0 )
             {
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z +10.0f) ;
-              //  Debug.Log("x pos : " + transform.position.x + "   ypos :  " + transform.position.y);
                 Instantiate(endExplosion, pos, Quaternion.identity);
                 isDestroy = true;
                 timeLeft = 3.0f;
- //               Destroy(gameObject, 2.0f);
             }
-          //  anim.Play("Explosion", 0, 0);
-          //  Debug.Log("Hit plane : " + hitPoints);
         }
     }
 

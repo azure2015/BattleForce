@@ -24,7 +24,7 @@ public class ForwardBullet : MonoBehaviour
         {
             //    Quaternion angleToFire = Quaternion.Euler(0, 0, barrel.rotation.z + 180f);
             //  barrel.transform.Rotate(0, 0, 180f);
-            Debug.Log("Bullet dir " + barrel.rotation);
+     //       Debug.Log("Bullet dir " + barrel.rotation);
             var firedBullet = Instantiate(bullet, barrel.position, barrel.rotation); 
             firedBullet.AddForce(barrel.up * 224.0f);
             timeDelay = Random.Range(0.3f,0.8f);
