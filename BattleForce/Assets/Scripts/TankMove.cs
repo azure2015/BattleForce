@@ -20,13 +20,13 @@ public class TankMove : MonoBehaviour
     bool isCenter = false;
     bool isDestroy = false;
 
-    //  Animator anim;
+    Animator anim;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //   anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         currentAction = "Down";
 
     }
@@ -34,6 +34,22 @@ public class TankMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hitPoints < 0 && !isDestroy)
+        {
+            Instantiate(endExplosion, transform.position, Quaternion.identity);
+            SpriteRenderer[] childRenders = GetComponentsInChildren<SpriteRenderer>();
+            foreach (SpriteRenderer element in childRenders)
+            {
+                element.enabled = false;
+            }
+
+            FindObjectOfType<ForwardBullet>().Stopped();
+            Destroy(gameObject, 4.2f);
+            isDestroy = true;
+            timeLeft = 4.0f;
+        }
+        BossDestroyed();
+
         if (!isDestroy)
         {
             if (timer < 0)
@@ -67,9 +83,7 @@ public class TankMove : MonoBehaviour
                     break;
             }
 
-        //    CheckBossFireBullet();
         }
-        BossDestroyed();
 
     }
 
@@ -91,7 +105,6 @@ public class TankMove : MonoBehaviour
     {
         transform.position = new Vector2(transform.position.x, transform.position.y + (moveSpeed / 5) * Time.deltaTime);
     }
-
 
     void moveRight()
     {
@@ -129,28 +142,14 @@ public class TankMove : MonoBehaviour
             }
         }
     }
-
-
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Bullet" && transform.childCount == 0)
+        Debug.Log("Hit the base tank");
+        if (collision.tag == "Bullet")
         {
+            anim.Play("Explode_new", 0, 0);
             hitPoints--;
-            if (hitPoints < 0)
-            {
-                Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 10.0f);
-                //  Debug.Log("x pos : " + transform.position.x + "   ypos :  " + transform.position.y);
-                Instantiate(endExplosion, pos, Quaternion.identity);
-                isDestroy = true;
-                timeLeft = 3.0f;
-                //               Destroy(gameObject, 2.0f);
-            }
-            //  anim.Play("Explosion", 0, 0);
-            //  Debug.Log("Hit plane : " + hitPoints);
         }
     }
-
-
-
 
 }

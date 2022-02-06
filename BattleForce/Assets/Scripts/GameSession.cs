@@ -70,4 +70,9 @@ public class GameSession : MonoBehaviour
         currentLevel++;
         SceneManager.LoadScene(currentLevel);
     }
+
+    public int getLevel()
+    {
+        return currentLevel;
+    }
 }

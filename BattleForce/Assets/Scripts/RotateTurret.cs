@@ -33,7 +33,6 @@ public class RotateTurret : MonoBehaviour
             RotateByDegrees(rotationSpeed);
         } else
         {
-            Debug.Log("True");
             turrentEnd = true;
         }
 
@@ -42,7 +41,7 @@ public class RotateTurret : MonoBehaviour
             RotateByDegrees(rotationSpeed);
             if (currentAngle > 220 && !moveBack)
             {
-                Debug.Log("Angle : " + currentAngle);
+          
                 rotationSpeed = rotationSpeed * -1;
                 moveBack = true;
             }

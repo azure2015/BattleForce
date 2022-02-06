@@ -10,6 +10,7 @@ public class ForwardBullet : MonoBehaviour
     // Start is called before the first frame update
 
     float timeDelay = .5f;
+    bool isFiring = true;
 
     void Start()
     {
@@ -19,15 +20,20 @@ public class ForwardBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeDelay -= Time.deltaTime;
-        if (timeDelay < 0)
+        if (isFiring)
         {
-            //    Quaternion angleToFire = Quaternion.Euler(0, 0, barrel.rotation.z + 180f);
-            //  barrel.transform.Rotate(0, 0, 180f);
-     //       Debug.Log("Bullet dir " + barrel.rotation);
-            var firedBullet = Instantiate(bullet, barrel.position, barrel.rotation); 
-            firedBullet.AddForce(barrel.up * 224.0f);
-            timeDelay = Random.Range(0.3f,0.8f);
+            timeDelay -= Time.deltaTime;
+            if (timeDelay < 0)
+            {
+                var firedBullet = Instantiate(bullet, barrel.position, barrel.rotation);
+                firedBullet.AddForce(barrel.up * 224.0f);
+                timeDelay = Random.Range(0.3f, 0.8f);
+            }
         }
+    }
+
+    public void Stopped()
+    {
+        isFiring = false;
     }
 }

@@ -10,6 +10,8 @@ public class TankHealth : MonoBehaviour
     Animator anim;
     bool isDestroy = false;
 
+    float timeLeft = 3.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +24,29 @@ public class TankHealth : MonoBehaviour
         if (hitPoints < 0 && !isDestroy)
         {
             Instantiate(endExplosion, transform.position, Quaternion.identity);
-            Destroy(gameObject,1);
+            Destroy(gameObject,4);
             isDestroy = true;
+            timeLeft = 3.0f;
+        }
+        BossDestroyed();
+    }
+
+    void BossDestroyed()
+    {
+
+        if (isDestroy)
+        {
+            Debug.Log("Next level  " + FindObjectOfType<GameSession>().getLevel()); 
+            timeLeft -= Time.deltaTime;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            if (timeLeft < 0)
+            {
+                Debug.Log("Next level");
+                FindObjectOfType<GameSession>().NextLevel();
+            }
         }
     }
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {

@@ -309,6 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50802dcf0a03c474d9775cec0ab3021a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 35
   angleToRoate: {x: 0, y: 0, z: 30}
 --- !u!1 &7206522322282223748
 GameObject:
@@ -406,7 +407,6 @@ GameObject:
   - component: {fileID: 1994919996184424773}
   - component: {fileID: 5990374946835561699}
   - component: {fileID: 3067741350600364301}
-  - component: {fileID: 5400151144642866484}
   m_Layer: 0
   m_Name: TwopartTank
   m_TagString: Enemy
@@ -445,11 +445,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc46974f34900940b9bf60ea3d7f4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 10
+  hitPoints: 32
   moveSpeed: 3
   minLeft: -2.8
   maxRight: 2.4
-  endExplosion: {fileID: 0}
+  endExplosion: {fileID: 1617893629113062206, guid: 4a57c379389e340439cf75eb52bc28a9, type: 3}
   Actions:
   - Up
   - Down
@@ -572,20 +572,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &5400151144642866484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7206522322481875869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cf440c29c334d5449d1c73b158e73ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPoints: 32
-  endExplosion: {fileID: 1617893629113062206, guid: 4a57c379389e340439cf75eb52bc28a9, type: 3}
 --- !u!1 &7206522322951210263
 GameObject:
   m_ObjectHideFlags: 0
