@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5680885309489420880}
   - component: {fileID: 5680885309489420881}
   m_Layer: 0
-  m_Name: GroupOne
+  m_Name: GroupRight
   m_TagString: Untagged
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -48,12 +48,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camPosition: {fileID: 0}
-  enemy: {fileID: 2512797016670698169, guid: 4c79ada42c38f894ebdc014d48853c7f, type: 3}
+  enemy: {fileID: 2512797016670698169, guid: cf83737f02e18c44aa0d7a08a2a87cbb, type: 3}
   wayPoints:
   - {fileID: 5680885310533798986}
   - {fileID: 5680885310486940721}
   - {fileID: 5680885310435343390}
-  startAngle: 180
+  startAngle: 270
 --- !u!114 &5680885309489420881
 MonoBehaviour:
   m_ObjectHideFlags: 0

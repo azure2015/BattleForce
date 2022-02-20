@@ -89,6 +89,8 @@ public class MoveEnemy : MonoBehaviour
 
     void moveLeftToRight()
     {
+  //      Quaternion rotation = Quaternion.Euler(0f, 0f, 270f);
+    //    transform.rotation = rotation;
         transform.position = new Vector2(transform.position.x + (moveSpeed * Time.deltaTime), transform.position.y);
 
     }

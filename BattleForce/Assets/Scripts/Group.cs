@@ -7,6 +7,7 @@ public class Group : MonoBehaviour
     [SerializeField] GameObject camPosition;
     [SerializeField] GameObject enemy;
     [SerializeField] List<GameObject> wayPoints;
+    [SerializeField] float startAngle = 180f;
 
     bool isEnabled = false;
 
@@ -17,7 +18,8 @@ public class Group : MonoBehaviour
    
         if (isEnabled == false && camLocation < 0.5) 
         {
-            Quaternion rotation = new Quaternion(0f,0f,180f,0f);
+            //            Quaternion rotation = new Quaternion(0f,0f,startAngle,0f);
+            Quaternion rotation = Quaternion.Euler(0f, 0f, startAngle);
             foreach(GameObject element in wayPoints)
             {
                 Instantiate(enemy, element.transform.position, rotation);

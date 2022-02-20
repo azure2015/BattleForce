@@ -185,6 +185,7 @@ MonoBehaviour:
   enemy: {fileID: 2512797016670698169, guid: 663f1bd3da9ef0c44a2bf8f2c855c75e, type: 3}
   wayPoints:
   - {fileID: 2087549809}
+  startAngle: 180
 --- !u!1 &132008807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1104,7 @@ MonoBehaviour:
   enemy: {fileID: 2773571346224437851, guid: c84a2f20af1df22428abb87a5bcb843d, type: 3}
   wayPoints:
   - {fileID: 610260697}
+  startAngle: 180
 --- !u!4 &706149366
 Transform:
   m_ObjectHideFlags: 0
@@ -1425,6 +1427,7 @@ MonoBehaviour:
   enemy: {fileID: 2512797016670698169, guid: 663f1bd3da9ef0c44a2bf8f2c855c75e, type: 3}
   wayPoints:
   - {fileID: 411928164}
+  startAngle: 180
 --- !u!1 &878646232
 GameObject:
   m_ObjectHideFlags: 0
@@ -19184,6 +19187,7 @@ MonoBehaviour:
   enemy: {fileID: 2512797016670698169, guid: 663f1bd3da9ef0c44a2bf8f2c855c75e, type: 3}
   wayPoints:
   - {fileID: 132008807}
+  startAngle: 180
 --- !u!4 &1531711767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2540483072063562909, guid: b8bbdac5563f9b74abf2c57ee0060c7e, type: 3}
@@ -24628,6 +24632,7 @@ MonoBehaviour:
   enemy: {fileID: 2512797016670698169, guid: 663f1bd3da9ef0c44a2bf8f2c855c75e, type: 3}
   wayPoints:
   - {fileID: 1556368705}
+  startAngle: 180
 --- !u!1 &2080648166
 GameObject:
   m_ObjectHideFlags: 0
@@ -24692,6 +24697,7 @@ MonoBehaviour:
   enemy: {fileID: 2512797016670698169, guid: 663f1bd3da9ef0c44a2bf8f2c855c75e, type: 3}
   wayPoints:
   - {fileID: 1626498788}
+  startAngle: 180
 --- !u!4 &2083062708
 Transform:
   m_ObjectHideFlags: 0
@@ -25068,10 +25074,6 @@ PrefabInstance:
     - target: {fileID: 5680885309489420894, guid: fb1a4492c51a88d4e80fe9a30269824a, type: 3}
       propertyPath: m_Name
       value: GroupOne
-      objectReference: {fileID: 0}
-    - target: {fileID: 5680885309489420894, guid: fb1a4492c51a88d4e80fe9a30269824a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb1a4492c51a88d4e80fe9a30269824a, type: 3}

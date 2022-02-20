@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2345819798389217176}
   - component: {fileID: 8364853421052724835}
   m_Layer: 0
-  m_Name: Enemy RL
+  m_Name: Enemy LR 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40480a059bdad4a489983c6bae359dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 5
+  direction: 4
   moveSpeed: 2
-  bulletPrefab: {fileID: 127863595157471971, guid: c9d098e222ab0134aae4e50105039c3f, type: 3}
+  bulletPrefab: {fileID: 127863595157471971, guid: ad8ef6988bcd75c4487dea117b113992, type: 3}
   fireRateMax: 2
   fireRateMin: 1
 --- !u!58 &8859498713970712545
