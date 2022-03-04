@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83bc39577f21a840a55f4c18b1eeeb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 6
+  hitPoints: 15
   bulletPrefab: {fileID: 6240349210597436119, guid: 291171e03fc72ed49a1ef6fdc55ac483, type: 3}
   fireRateMax: 3
   fireRateMin: 1
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cfa5600b8422fe45ade2f58be9dfe5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 5
+  hitPoints: 20
   moveSpeed: 3
   minLeft: -2.8
   maxRight: 2.4
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83bc39577f21a840a55f4c18b1eeeb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 6
+  hitPoints: 15
   bulletPrefab: {fileID: 6240349210597436119, guid: 291171e03fc72ed49a1ef6fdc55ac483, type: 3}
   fireRateMax: 3
   fireRateMin: 1

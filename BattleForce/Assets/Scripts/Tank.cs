@@ -26,4 +26,13 @@ public class Tank : MonoBehaviour
             timeLeft = Random.Range(fireRateMin, fireRateMax);
         }
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag=="Boundary")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
