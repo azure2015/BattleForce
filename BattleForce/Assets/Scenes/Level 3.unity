@@ -965,7 +965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1531711767}
   smoothing: 0.5
-  maxPos: {x: 2, y: 51.16}
+  maxPos: {x: 1.85, y: 51.16}
   minPos: {x: -2.39, y: -4.82}
 --- !u!1001 &563625142
 PrefabInstance:
