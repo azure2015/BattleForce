@@ -131,14 +131,12 @@ public class Player : MonoBehaviour
             anim = GetComponent<Animator>();
             anim.enabled = true;
             audioSource.Stop();
-           // PlayerDeath();
         }
         else if (collision.tag == "EnemyBullet")
         {
             hitPoints--;
             spitfireSprite.sprite = planeSprites[hitPoints];
             PlayParticleHit();
-            Debug.Log("Player health : " + hitPoints);
 
         }
 
@@ -148,9 +146,14 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            PlayerDeath();
+            hitPoints--;
+            if (hitPoints > 0)
+            {
+                spitfireSprite.sprite = planeSprites[hitPoints];
+            }
+            PlayParticleHit();
         }
-           
+
     }
 
     void PlayerDeath()

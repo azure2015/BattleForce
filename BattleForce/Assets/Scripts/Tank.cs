@@ -5,16 +5,10 @@ using UnityEngine;
 public class Tank : MonoBehaviour
 {
     [SerializeField] GameObject TankBullet;
-
     [SerializeField] float fireRateMax = 3.0f;
     [SerializeField] float fireRateMin = 1.0f;
 
     float timeLeft;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -26,7 +20,6 @@ public class Tank : MonoBehaviour
             timeLeft = Random.Range(fireRateMin, fireRateMax);
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

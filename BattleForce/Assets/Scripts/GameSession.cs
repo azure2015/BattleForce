@@ -7,10 +7,9 @@ public class GameSession : MonoBehaviour
     [SerializeField] int playerLives = 3;
     [SerializeField] TextMeshProUGUI livesText;
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] int score = 0;
+    public int score = 0;
 
     int currentLevel;
-  //  int score = 300;
 
     // Start is called before the first frame update
     void Awake()
@@ -47,8 +46,9 @@ public class GameSession : MonoBehaviour
 
     void ResetGameSession()
     {
-        SceneManager.LoadScene(0);
-        Destroy(gameObject);
+      //  SceneManager.LoadScene(0);
+        SceneManager.LoadScene(5);
+        Destroy(gameObject,1);
     }
 
     void TakeLife()

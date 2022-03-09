@@ -12,6 +12,11 @@ public class GetScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        scoreReference = FindObjectOfType<GameSession>();
+    }
+
+    void Update()
+    {
         scoreText.text = "Final Score : \n" + scoreReference.GetScore().ToString();
     }
 

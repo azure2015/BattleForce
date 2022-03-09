@@ -51,6 +51,22 @@ public class Health : MonoBehaviour
             hitPoints--;
             
         }
+
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            anim.SetBool("isDead", true);
+            //    FindObjectOfType<GameSession>().AddScore(10);
+            var getCollider = gameObject.GetComponent<CircleCollider2D>();
+            getCollider.enabled = false;
+            isDead = true;
+            PlayParticleHit();
+            Destroy(gameObject, delayTime);
+        }
+
     }
 
 
