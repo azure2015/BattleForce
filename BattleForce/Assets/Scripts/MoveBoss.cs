@@ -15,6 +15,7 @@ public class MoveBoss : MonoBehaviour
     [SerializeField] float fireRateMin = .5f;
 
     [SerializeField] GameObject endExplosion;
+    [SerializeField] int destroyScore = 1000;
 
     [SerializeField] List<string> Actions = new List<string> { "Left", "Right", "Center","Left", "Right" };
     float timer = 4f;
@@ -126,8 +127,10 @@ public class MoveBoss : MonoBehaviour
         {
             timeLeft -= Time.deltaTime;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            
             if (timeLeft < 0)
             {
+                FindObjectOfType<GameSession>().AddScore(destroyScore);
                 FindObjectOfType<GameSession>().NextLevel();
             }
         }

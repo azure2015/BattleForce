@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TankMove : MonoBehaviour
 {
-    [SerializeField] int hitPoints = 10;
+    [SerializeField] int hitPoints = 30;
     [SerializeField] float moveSpeed = 3.0f;
     [SerializeField] float minLeft = -2.8f;
     [SerializeField] float maxRight = 2.4f;
@@ -16,6 +16,7 @@ public class TankMove : MonoBehaviour
     float timeLeft;
 
     int currentIndex = 0;
+    int destroyScore = 1000;
     string currentAction;
     bool isCenter = false;
     bool isDestroy = false;
@@ -44,6 +45,7 @@ public class TankMove : MonoBehaviour
             }
 
             FindObjectOfType<ForwardBullet>().Stopped();
+            FindObjectOfType<GameSession>().AddScore(destroyScore);
             Destroy(gameObject, 4.2f);
             isDestroy = true;
             timeLeft = 4.0f;

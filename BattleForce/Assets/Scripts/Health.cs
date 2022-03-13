@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] int hitPoints = 2;
     [SerializeField] new ParticleSystem particleSystem;
+    [SerializeField] int destroyScore = 10;
 
     Animator anim;
     float delayTime = 0.5f;
@@ -20,18 +21,14 @@ public class Health : MonoBehaviour
             angleDirection = -0.5f;
         }
         anim = GetComponent<Animator>();
-     //   anim.SetBool("isDead", true);
 
     }
     void Update()
     {
-      //  anim.SetBool("isDead", true);
         if (isDead)
         {
             gameObject.transform.Rotate(new Vector3(0f, 0f, 1f), angleDirection) ;
             gameObject.transform.localScale += new Vector3(-0.005f, -0.005f, 0f);
-            
-
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
@@ -39,7 +36,7 @@ public class Health : MonoBehaviour
         if(collision.gameObject.tag=="Bullet" && hitPoints <= 0)
         {
             anim.SetBool("isDead", true);
-            FindObjectOfType<GameSession>().AddScore(10);
+            FindObjectOfType<GameSession>().AddScore(destroyScore);
             var getCollider = gameObject.GetComponent<CircleCollider2D>();
             getCollider.enabled = false;
             isDead = true;
@@ -59,14 +56,12 @@ public class Health : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             anim.SetBool("isDead", true);
-            //    FindObjectOfType<GameSession>().AddScore(10);
             var getCollider = gameObject.GetComponent<CircleCollider2D>();
             getCollider.enabled = false;
             isDead = true;
             PlayParticleHit();
             Destroy(gameObject, delayTime);
         }
-
     }
 
 

@@ -103,6 +103,7 @@ MonoBehaviour:
   tilePosition: {fileID: 0}
   endPosition: {fileID: 0}
   playerHit: {fileID: 19416231708236123}
+  bulletPosition: {fileID: 5211162506256436571}
   bottomLevel: {fileID: 0}
   topLevel: {fileID: 0}
   fireRate: 0.8
@@ -144,9 +145,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2679029, y: -0.258913}
+  m_Offset: {x: 0.018473983, y: -0.04954484}
   serializedVersion: 2
-  m_Radius: 0.2932293
+  m_Radius: 0.264351
 --- !u!82 &1834352778
 AudioSource:
   m_ObjectHideFlags: 0
@@ -337,7 +338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5211162506256436571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.313, y: -0.101, z: 0}
+  m_LocalPosition: {x: -0, y: -0.058, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2540483072063562909}

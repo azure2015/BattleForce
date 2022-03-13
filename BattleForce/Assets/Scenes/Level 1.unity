@@ -20147,6 +20147,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074407889, guid: b8bbdac5563f9b74abf2c57ee0060c7e, type: 3}
+      propertyPath: fireRate
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074407889, guid: b8bbdac5563f9b74abf2c57ee0060c7e, type: 3}
       propertyPath: topLevel
       value: 
       objectReference: {fileID: 1941742066}

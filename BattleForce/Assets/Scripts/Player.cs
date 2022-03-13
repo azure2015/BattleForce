@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject endPosition;
     [SerializeField] ParticleSystem playerHit = null;
 
-
     [SerializeField] GameObject bottomLevel;
     [SerializeField] GameObject topLevel;
 
